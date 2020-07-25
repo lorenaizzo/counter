@@ -1,68 +1,120 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Ejemplo Redux con Hooks
+## Contador donde se puede indicar el valor a incrementar o decrementar realizado con Hooks y Redux
 
-## Available Scripts
+La aplicacion inicia con:
 
-In the project directory, you can run:
+```
+npm start
 
-### `npm start`
+```
+El proyecto se encuentra modularizado en carpetas.
+En la carpeta "contador" se encuentran los componentes creados:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- btnDecrementar: boton para decrementar el valor indicado al contador
+- btnIncrementar: boton para incrementar el valor indicado al contador
+- inputValor: input para indicar el valor a incrementar/decrementar
+- mostrar: es solo un h1 que muestra el valor actual del contador
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Utilice CSS para dar un diseño agradable pero basico. Son varios CSS, algunos dentro de los compomentes y otros generales. La idea de hacer esto es que se pueda apreciar que React permite incorporar varios archivos CSS.
+Para la posicion de los elementos utilice el display flex.
 
-### `npm test`
+## En cuanto a Redux 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Redux es una forma para poder tener "variables globales al proyecto" es decir, poder conservar ciertos valores que sean generales al proyecto, permitiendo verlos y cambiarlos desde cualquier componente.
 
-### `npm run build`
+En este ejemplo puse dentro de una carpeta (store) los 2 archivos referidos a Redux:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- El archivo actions.js contiene constantes para ser utilizadas en el programa, su intencion es minimizar los errores de tipeo.
+- El archivo configureStore contiene los valores iniciales del state y el reducer.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Redux se actualizo para poder ser utilizado con Hooks por lo que ahora dispone de unos use. Para este ejemplo utilice:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- useSelector() para poder acceder al valor almacenado en el store. Ejemplo:
 
-### `npm run eject`
+```
+const value = useSelector(store => store.value)
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- useDispatch() para poder modificar el valor de las variables.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+const dispatch = useDispatch();
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+...
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+dispatch({type: VALUE, data: value});
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## En cuanto a Hooks
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+A Julio 2020 es de las ultimas mejoras de ReactJS, el objetivo es poder utilizar variables persistentes dentro de las funciones, es decir, no necesitar usar clases con state. Simplificando, los hooks son a las funciones, lo que el state es a las clases.
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Espero los sirva!
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+# Redux in Hooks. Example
+## This is a counter where you can indicate a value for increment and decrement. I made it with Hooks and Redux
 
-### `npm run build` fails to minify
+To start the application:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+npm start
+
+```
+
+For your convinience I created folders for each component.
+
+In "Contador" folder you can find:
+
+- btnDecrementar: decrement button
+- btnIncrementar: increment button
+- inputValor: input to value. This value will be increment/decrement when you click buttons
+- mostrar: h1 to show counter
+
+There are a lot of CSS files, some into a component folder and other are general. Then you can see that React allows you to create a lot of css files in your project.
+
+I used display flex.
+
+## Redux concern... 
+
+Redux is a way to have "global variables available into the entire project", that means we can persist some values for entire application. Then you can see it and change it in any component too.
+
+For this example I created store folder and 2 files for Redux:
+
+- actions.js file contain constants to be used in component and reducer for avoid errors.
+- The configureStore file with initial values for state and the reducer.
+
+Redux have been updated to Hooks so now have some "use..." functions for this. For this example I had used:
+
+- useSelector() to access store values. Ex:
+
+```
+const value = useSelector(store => store.value)
+```
+
+- useDispatch() to change values into store.
+
+```
+const dispatch = useDispatch();
+
+...
+
+dispatch({type: VALUE, data: value});
+
+```
+
+## Talking about Hooks...
+
+By July 2020 one of the lastest improvements into ReactJs are Hooks. It is a way to persist variables into functions, so you wont need to use classes anymore. 
+
+Hooks is to function like state is to classes.
+
+Hope you find it useful!

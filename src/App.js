@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Contador from './contador/mostrar/mostrar';
+import BtnIncrementar from './contador/btnIncrementar/incrementar';
+import BtnDecrementar from './contador/btnDecrementar/decrementar';
+import InputValor from './contador/inputValor/valor';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   return (
+    <div>
+      <div className="titulo">
+        <h1>Redux con Hooks</h1>
+        <blockquote>Contador con incremento dado por el usuario</blockquote>
+      </div>
+      <Contador />
+      <div className="comandos">
+        <BtnDecrementar />
+        <InputValor />      
+        <BtnIncrementar />
+      </div>
+
     </div>
   );
 }
